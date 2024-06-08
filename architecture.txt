@@ -1,0 +1,36 @@
+***************************************
+************ Architecture *************
+***************************************
+
+user --> login/signup --> auth cookie --> upload pdf --> server --> multer --> aws s3 --> return pdf key --> 
+generate url ---> bullmq --> folder status creating
+
+
+bullmq (folderID, url) --> get pdf in buffer form --> extract text --> split into chunks --> 
+generate for each embedding --> save into db --> folder status success
+                                             --> folder status failed
+
+
+user --> question --> question embedding --> similarity search using pgvector --> get top 3 chunks data --> 3 chunk + question + chat history --> llm model --> get answer --> Q/A saved into db
+
+
+
+
+***************************************
+********* Technologies used ***********
+***************************************
+
+Nodejs with Typescript
+express
+eslint & prettier
+winston
+typeorm --> postgres
+ioredis --> bullmq queue
+aws and multer --> pdf upload
+pdf-parse ---> extract text from pdf
+gemini ---> for generate embedding and answer
+envalid ---> dotenv validator
+express-validator --> body data validator
+http-errors --> error handling 
+bcryptjs --> hashing password
+

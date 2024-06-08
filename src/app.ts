@@ -8,7 +8,7 @@ import folderRoutes from "./routes/folderRoute";
 import questionAnswerRoutes from "./routes/QA";
 import "./bullmq/worker/processPdf";
 
-// Initialize Express app
+// Initialize Express ap
 const app = express();
 
 app.use(express.json());

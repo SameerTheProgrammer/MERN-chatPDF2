@@ -12,10 +12,10 @@ const startServer = async () => {
 
         await AppDataSource.query("CREATE EXTENSION IF NOT EXISTS vector;");
 
-        // await AppDataSource.query(`
-        //     ALTER TABLE chunk_embedding
-        //     ALTER COLUMN embedding TYPE vector(768) USING embedding::vector;
-        // `);
+        await AppDataSource.query(`
+            ALTER TABLE chunk_embedding
+            ALTER COLUMN embedding TYPE vector(768) USING embedding::vector;
+        `);
 
         app.listen(PORT, () => {
             logger.info(`Server is running on port ${PORT}..`);
